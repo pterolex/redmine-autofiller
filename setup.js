@@ -29,7 +29,8 @@
         } else {
             var originMonth = new Date().getMonth();
             for(var i = 0; i < dates.length;++i) {
-                var dd = convertToUtc(dates[i]);
+                var dd = new Date(dates[i].valueOf());
+                dd = convertToUtc(dd);
                 var strDate = dd.toISOString().slice(0, 10);
                 if (parseInt(strDate.slice(5, 7), 10) !== (originMonth + 1)) {
                     console.log("Error in month:" + strDate + " " + (originMonth + 1));
