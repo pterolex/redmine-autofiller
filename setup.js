@@ -49,7 +49,17 @@ console.log("Logging: issue #" + issueId + ", activity " + activityId + ", date 
         }
     };
 
-    var clickOnShow = function() {
+    var clearDates = function() {
+        $("#calendarPH").multiDatesPicker('resetDates', 'picked');
+    };
+
+    var setWorkingDates = function() {
+        $("#calendarPH").multiDatesPicker('resetDates', 'picked');
+        var dates = getWorkingDates();
+        $("#calendarPH").multiDatesPicker('addDates', dates);
+    };
+
+    var getWorkingDates = function() {
         var originMonth = new Date().getMonth();
         var dates = [];
         for (var i = 1; i <= 31; ++i) {        
@@ -63,12 +73,19 @@ console.log("Logging: issue #" + issueId + ", activity " + activityId + ", date 
                 dates.push(dd);
             }
         }
-        $("#calendarPH").multiDatesPicker({
-            firstDay: 1,
-            addDates: dates
-        });
-        var fillButton = $("<button/>").text("Fill").click(clickOnFill);
-        $("#content").prepend(fillButton);
+        return dates;
+    };
+
+    var clickOnShow = function() {
+        var dates = getWorkingDates();
+        $("#calendarPH").multiDatesPicker({ firstDay: 1, addDates: dates });
+        var button = $("<button/>").text("Fill").click(clickOnFill);
+        $("#content").prepend(button);
+        button = $("<button/>").text("Clear dates").click(clearDates);
+        $("#content").prepend(button);
+        button = $("<button/>").text("Set working dates").click(setWorkingDates);
+        $("#content").prepend(button);
+
         var el = $(selectorHTML);
         $("#content").prepend(el);
         el = $(issueNumberHTML);
