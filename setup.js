@@ -96,7 +96,7 @@
         $("#content").prepend(el);
     };
 
-    window.setup = function() {
+    var setup = function() {
         var newSS=document.createElement("link");
         newSS.rel="stylesheet";
         newSS.href="data:text/css," + escape(styles);
@@ -107,4 +107,5 @@
         var calendarPlaceholder = $("<div id='calendarPH'></div>");
         $("#content").prepend(calendarPlaceholder);
     };
+    setup();
 }(jQuery));
