@@ -19,7 +19,7 @@
         return dd;
     };
 
-    var clickOnShow = function() {
+    var clickOnFill = function() {
         var dates = $("#calendarPH").multiDatesPicker("getDates", "object");
 
         var activityId = $("#time_entry_activity_id").val();
