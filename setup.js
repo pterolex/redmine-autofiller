@@ -28,16 +28,18 @@
         var issueId = $("#time_entry_issue_id").val();
         if (issueId == "" || activityId == "") {
             alert("Please fill all fields!");
+        } else if (dates.length === 0) {
+            alert("No date selected!");
         } else {
             var originMonth = new Date().getMonth();
-            for(var i = 0; i < dates.length;++i) {
+            for(var i = 0; i < dates.length; ++i) {
                 var dd = new Date(dates[i].valueOf());
                 dd = convertToUtc(dd);
                 var strDate = dd.toISOString().slice(0, 10);
                 if (parseInt(strDate.slice(5, 7), 10) !== (originMonth + 1)) {
                     console.log("Error in month:" + strDate + " " + (originMonth + 1));
                 } else {
-console.log("Logging: issue #" + issueId + ", activity " + activityId + ", date " + strDate);
+                    console.log("Logging: issue #" + issueId + ", activity " + activityId + ", date " + strDate);
                     if (false) {
                     $.post( "/projects/givenimaging/timelog/edit", {         
                         "time_entry[activity_id]": activityId,
