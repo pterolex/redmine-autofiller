@@ -3,7 +3,7 @@
 
     var issueNumberHTML = 
         '<p><label for="time_entry_issue_id">Issue</label>' +
-        '<input id="time_entry_issue_id" type="text" value="9986" size="6" name="time_entry[issue_id]"></p>';
+        '<input id="time_entry_issue_id" type="text" value="" size="6" name="time_entry[issue_id]"></p>';
 
     var selectorHTML = 
        '<p><label for="time_entry_activity_id">Activity</label><select id="time_entry_activity_id" name="time_entry[activity_id]">' +
@@ -11,6 +11,8 @@
        '<option value="9">Development</option>' +
        '<option value="16">Testing</option>' +
        '<option value="20">Graphic Design</option>' +
+       '<option value="56">Sick leave</option>' +
+       '<option value="57">Vacation</option>' +
        '</select></p>';
 
     var convertToUtc = function(dd) {
