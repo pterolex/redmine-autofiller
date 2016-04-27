@@ -98,7 +98,7 @@
         $("#showCalendarButton").hide();
     };
 
-    var setup = function() {
+    window.setup = function() {
         var newSS=document.createElement("link");
         newSS.rel="stylesheet";
         newSS.href="data:text/css," + escape(styles);
