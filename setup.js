@@ -99,14 +99,16 @@
     };
 
     window.setup = function() {
-        var newSS=document.createElement("link");
-        newSS.rel="stylesheet";
-        newSS.href="data:text/css," + escape(styles);
-        document.documentElement.childNodes[0].appendChild(newSS);
+        if ($("#showCalendarButton").length !== 0) {
+            var newSS=document.createElement("link");
+            newSS.rel="stylesheet";
+            newSS.href="data:text/css," + escape(styles);
+            document.documentElement.childNodes[0].appendChild(newSS);
 
-        var button = $("<button id='showCalendarButton'/>").text("Show Calendar").click(clickOnShow);
-        $("#content").prepend(button);
-        var calendarPlaceholder = $("<div id='calendarPH'></div>");
-        $("#content").prepend(calendarPlaceholder);
+            var button = $("<button id='showCalendarButton'/>").text("Show Calendar").click(clickOnShow);
+            $("#content").prepend(button);
+            var calendarPlaceholder = $("<div id='calendarPH'></div>");
+            $("#content").prepend(calendarPlaceholder);
+        }
     };
 }(jQuery));
