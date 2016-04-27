@@ -94,6 +94,8 @@
         $("#content").prepend(el);
         el = $(issueNumberHTML);
         $("#content").prepend(el);
+
+        $("#showCalendarButton").hide();
     };
 
     var setup = function() {
@@ -102,10 +104,9 @@
         newSS.href="data:text/css," + escape(styles);
         document.documentElement.childNodes[0].appendChild(newSS);
 
-        var button = $("<button/>").text("Show Calendar").click(clickOnShow);
+        var button = $("<button id='showCalendarButton'/>").text("Show Calendar").click(clickOnShow);
         $("#content").prepend(button);
         var calendarPlaceholder = $("<div id='calendarPH'></div>");
         $("#content").prepend(calendarPlaceholder);
     };
-    setup();
 }(jQuery));
