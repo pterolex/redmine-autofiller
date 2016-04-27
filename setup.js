@@ -80,7 +80,7 @@
         return dates;
     };
 
-    var clickOnShow = function() {
+    var showCalendar = function() {
         var dates = getWorkingDates();
         $("#calendarPH").multiDatesPicker({ firstDay: 1, addDates: dates });
         var button = $("<button/>").text("Fill").click(clickOnFill);
@@ -94,21 +94,19 @@
         $("#content").prepend(el);
         el = $(issueNumberHTML);
         $("#content").prepend(el);
-
-        $("#showCalendarButton").hide();
     };
 
     window.setup = function() {
-        if ($("#showCalendarButton").length === 0) {
+        if ($("#calendarPH").length === 0) {
             var newSS=document.createElement("link");
             newSS.rel="stylesheet";
             newSS.href="data:text/css," + escape(styles);
             document.documentElement.childNodes[0].appendChild(newSS);
 
-            var button = $("<button id='showCalendarButton'/>").text("Show Calendar").click(clickOnShow);
-            $("#content").prepend(button);
             var calendarPlaceholder = $("<div id='calendarPH'></div>");
             $("#content").prepend(calendarPlaceholder);
+
+            showCalendar();
         }
     };
 }(jQuery));
