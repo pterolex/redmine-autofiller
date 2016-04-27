@@ -1,6 +1,10 @@
 ﻿(function($) {
-    var loader = $("<div id='loader'>Loading...</div>");
-    $("#content").prepend(loader);
+    if ($("#loader").length === 0) {
+        var loader = $("<div id='loader'>Loading...</div>");
+        $("#content").prepend(loader);
+    } else {
+        $("#loader").show();
+    }
 
     var gitHub = "https://raw.githubusercontent.com/s-iaroshenko";
     $.getScript("https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js", function() {
