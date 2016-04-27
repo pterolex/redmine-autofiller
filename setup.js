@@ -99,7 +99,7 @@
     };
 
     window.setup = function() {
-        if ($("#showCalendarButton").length !== 0) {
+        if ($("#showCalendarButton").length === 0) {
             var newSS=document.createElement("link");
             newSS.rel="stylesheet";
             newSS.href="data:text/css," + escape(styles);
