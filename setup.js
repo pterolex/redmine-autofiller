@@ -2,7 +2,7 @@
     var styles=".ui-datepicker .ui-datepicker-calendar .ui-state-highlight a{background:#743620 none;color:white;}";
 
     var issueNumberHTML = 
-        '<p><label for="time_entry_issue_id">Issue</label>' +
+        '<p><label for="time_entry_issue_id">Issue number</label>' +
         '<input id="time_entry_issue_id" type="text" value="" size="6" name="time_entry[issue_id]"></p>';
 
     var selectorHTML = 
@@ -50,6 +50,10 @@
         }
     };
 
+    var isNumeric = function(value) {
+        return /^\d+$/.test(value);
+    };
+
     var clickOnFill = function() {
         var dates = $("#calendarPH").multiDatesPicker("getDates", "object");
 
@@ -59,6 +63,8 @@
         var entriesToPost = [];
         if (issueId == "") {
             alert("Please fill Issue number");
+        } else if (!isNumeric(issueId)) {
+            alert("Issue number is not a valid number");
         } else if (activityId == "") {
             alert("Please select Activity");
         } else if (dates.length === 0) {
