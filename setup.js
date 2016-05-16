@@ -21,13 +21,39 @@
         return dd;
     };
 
+    var postDates = function(activityId, issueId, hours, entriesToPost) {
+        if (entriesToPost.length === 0) {
+            alert("Logged successfully!");
+        } else {
+            var strDate = entriesToPost[0];
+            var slisedArray = entriesToPost.slice(1);
+            var nextCall = postDates.bind(null, activityId, issueId, hours, slisedArray);
+            var entryToLog = {         
+                "time_entry[activity_id]": activityId,
+                "time_entry[comments]": "",
+                "time_entry[hours]": ("" + hours),
+                "time_entry[issue_id]": issueId,
+                "time_entry[spent_on]": strDate
+            };
+            if (true/*debug*/) {
+                console.log(entryToLog);
+                setTimeout(nextCall, 1000);
+            } else {
+                $.post("/projects/givenimaging/timelog/edit", entryToLog, nextCall);
+        }
+    };
+
     var clickOnFill = function() {
         var dates = $("#calendarPH").multiDatesPicker("getDates", "object");
 
         var activityId = $("#time_entry_activity_id").val();
         var issueId = $("#time_entry_issue_id").val();
-        if (issueId == "" || activityId == "") {
-            alert("Please fill all fields!");
+        var totalTime = 0;
+        var entriesToPost = [];
+        if (issueId == "") {
+            alert("Please fill Issue number");
+        } else if (activityId == "") {
+            alert("Please select Activity");
         } else if (dates.length === 0) {
             alert("No date selected!");
         } else {
@@ -40,17 +66,15 @@
                     console.log("Error in month:" + strDate + " " + (originMonth + 1));
                 } else {
                     console.log("Logging: issue #" + issueId + ", activity " + activityId + ", date " + strDate);
-                    if (false) {
-                    $.post( "/projects/givenimaging/timelog/edit", {         
-                        "time_entry[activity_id]": activityId,
-                        "time_entry[comments]": "",
-                        "time_entry[hours]": "8",
-                        "time_entry[issue_id]": issueId,
-                        "time_entry[spent_on]": strDate
-                    });        }
+                    entriesToPost.push(strDate);
+                    totalTime += 8;
                 }
             }
+            if (confirm("Are you sure you want to log " + totalTime + " hours?")) {
+                postDates(activityId, issueId, 8, entriesToPost);
+            }
         }
+        
     };
 
     var clearDates = function() {
