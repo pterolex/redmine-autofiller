@@ -32,8 +32,8 @@
             var oldVal = $("#progressBar").val();
             $("#progressBar").val(oldVal + 1);
             var strDate = entriesToPost[0];
-            var slisedArray = entriesToPost.slice(1);
-            var nextCall = postDates.bind(null, activityId, issueId, hours, slisedArray);
+            var slicedArray = entriesToPost.slice(1);
+            var nextCall = postDates.bind(null, activityId, issueId, hours, slicedArray);
             var entryToLog = {         
                 "time_entry[activity_id]": activityId,
                 "time_entry[comments]": "",
