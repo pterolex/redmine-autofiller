@@ -40,6 +40,7 @@
                 setTimeout(nextCall, 1000);
             } else {
                 $.post("/projects/givenimaging/timelog/edit", entryToLog, nextCall);
+            }
         }
     };
 
