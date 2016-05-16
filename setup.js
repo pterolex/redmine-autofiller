@@ -24,7 +24,11 @@
     var postDates = function(activityId, issueId, hours, entriesToPost) {
         if (entriesToPost.length === 0) {
             alert("Logged successfully!");
+            $("#progressBar").hide();
+            $("#mainFillerHolder").show();
         } else {
+            var oldVal = $("#progressBar").val();
+            $("#progressBar").val(oldVal + 1);
             var strDate = entriesToPost[0];
             var slisedArray = entriesToPost.slice(1);
             var nextCall = postDates.bind(null, activityId, issueId, hours, slisedArray);
@@ -66,12 +70,17 @@
                 if (parseInt(strDate.slice(5, 7), 10) !== (originMonth + 1)) {
                     console.log("Error in month:" + strDate + " " + (originMonth + 1));
                 } else {
-                    console.log("Logging: issue #" + issueId + ", activity " + activityId + ", date " + strDate);
                     entriesToPost.push(strDate);
                     totalTime += 8;
                 }
             }
             if (confirm("Are you sure you want to log " + totalTime + " hours?")) {
+                $("#mainFillerHolder").hide();
+                if ($("#progressBar").length === 0) {
+                    var progressBar = $("<progress id='progressBar' max='" + entriesToPost.length + "'></progress>");
+                    $("#content").prepend(progressBar);
+                }
+                $("#progressBar").val(0);
                 postDates(activityId, issueId, 8, entriesToPost);
             }
         }
@@ -109,16 +118,16 @@
         var dates = getWorkingDates();
         $("#calendarPH").multiDatesPicker({ firstDay: 1, addDates: dates });
         var button = $("<button/>").text("Fill").click(clickOnFill);
-        $("#content").prepend(button);
+        $("#mainFillerHolder").prepend(button);
         button = $("<button/>").text("Clear dates").click(clearDates);
-        $("#content").prepend(button);
+        $("#mainFillerHolder").prepend(button);
         button = $("<button/>").text("Set working dates").click(setWorkingDates);
-        $("#content").prepend(button);
+        $("#mainFillerHolder").prepend(button);
 
         var el = $(selectorHTML);
-        $("#content").prepend(el);
+        $("#mainFillerHolder").prepend(el);
         el = $(issueNumberHTML);
-        $("#content").prepend(el);
+        $("#mainFillerHolder").prepend(el);
     };
 
     window.setup = function() {
@@ -127,9 +136,11 @@
             newSS.rel="stylesheet";
             newSS.href="data:text/css," + escape(styles);
             document.documentElement.childNodes[0].appendChild(newSS);
+            var mainFillerHolder = $("<div id='mainFillerHolder'></div>");
+            $("#content").prepend(mainFillerHolder);
 
             var calendarPlaceholder = $("<div id='calendarPH'></div>");
-            $("#content").prepend(calendarPlaceholder);
+            $("#mainFillerHolder").prepend(calendarPlaceholder);
 
             showCalendar();
         }
