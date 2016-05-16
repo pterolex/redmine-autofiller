@@ -79,12 +79,13 @@
                 if ($("#progressBar").length === 0) {
                     var progressBar = $("<progress id='progressBar' max='" + entriesToPost.length + "'></progress>");
                     $("#content").prepend(progressBar);
+                } else {
+                    $("#progressBar").show();
                 }
                 $("#progressBar").val(0);
                 postDates(activityId, issueId, 8, entriesToPost);
             }
-        }
-        
+        }        
     };
 
     var clearDates = function() {
