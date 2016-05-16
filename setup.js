@@ -23,6 +23,8 @@
 
     var postDates = function(activityId, issueId, hours, entriesToPost) {
         if (entriesToPost.length === 0) {
+            var maxVal = $("#progressBar").attr('max');
+            $("#progressBar").val(maxVal);
             alert("Logged successfully!");
             $("#progressBar").hide();
             $("#mainFillerHolder").show();
