@@ -1,12 +1,15 @@
 ﻿(function($) {
-    var styles=".ui-datepicker .ui-datepicker-calendar .ui-state-highlight a{background:#743620 none;color:white;} "+
-".actionsWrapper button { background: #eb007b none repeat scroll 0 0; line-height: 24px; margin: 0 3px; padding: 0 10px; } " +
-".main_button { font-weight: bold; } " +
+    var styles=
+".actionWrapper button { background: #fff none repeat scroll 0 0; line-height: 24px; margin: 0 3px; padding: 0 10px; } " +
+".main_button { background:#eb007b; font-weight: bold; color:#fff; } " +
 ".hasDatepicker { border: 1px solid #ddd; margin: 10px 0; padding: 10px; }" +
 ".fillWrapper { background: rgba(255, 255, 255, 0.3) none repeat scroll 0 0; border: 1px solid rgba(0, 0, 0, 0.15); " +
     " box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); display: inline-block; margin: 20px; padding: 20px; } " +
 ".fillWrapper input, .fillWrapper select { margin: 0 5px; } "+
-"#mainFillHolder { clear: both; display: block; }";
+"#mainFillHolder { clear: both; display: block; }" +
+".ui-datepicker-prev, .ui-datepicker-next { display: none; } " +
+".ui-state-default {display: block;padding: 3px;text-align: center;} " +
+".ui-datepicker .ui-datepicker-calendar .ui-state-highlight a { background: #743620 none repeat scroll 0 0; color: white; } ";
 
     var issueNumberHTML = 
         '<p><label for="time_entry_issue_id">Issue number</label>' +
@@ -148,6 +151,8 @@
         var el = $(selectorHTML);
         $("#fillWrapper").prepend(el);
         el = $(issueNumberHTML);
+        $("#fillWrapper").prepend(el);
+        el = $("<h2>Autofill script</h2>");
         $("#fillWrapper").prepend(el);
     };
 
