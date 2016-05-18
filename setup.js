@@ -1,5 +1,12 @@
 ﻿(function($) {
-    var styles=".ui-datepicker .ui-datepicker-calendar .ui-state-highlight a{background:#743620 none;color:white;}";
+    var styles=".ui-datepicker .ui-datepicker-calendar .ui-state-highlight a{background:#743620 none;color:white;} "+
+".actionsWrapper button { background: #eb007b none repeat scroll 0 0; line-height: 24px; margin: 0 3px; padding: 0 10px; } " +
+".main_button { font-weight: bold; } " +
+".hasDatepicker { border: 1px solid #ddd; margin: 10px 0; padding: 10px; }" +
+".fillWrapper { background: rgba(255, 255, 255, 0.3) none repeat scroll 0 0; border: 1px solid rgba(0, 0, 0, 0.15); " +
+    " box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); display: inline-block; margin: 20px; padding: 20px; } " +
+".fillWrapper input, .fillWrapper select { margin: 0 5px; } "+
+"#mainFillHolder { clear: both; display: block; }";
 
     var issueNumberHTML = 
         '<p><label for="time_entry_issue_id">Issue number</label>' +
@@ -126,17 +133,22 @@
     var showCalendar = function() {
         var dates = getWorkingDates();
         $("#calendarPH").multiDatesPicker({ firstDay: 1, addDates: dates });
-        var button = $("<button/>").text("Fill").click(clickOnFill);
-        $("#mainFillerHolder").prepend(button);
-        button = $("<button/>").text("Clear dates").click(clearDates);
-        $("#mainFillerHolder").prepend(button);
+
+        var actionWrapper = $("<div id='actionWrapper' class='actionWrapper'></div>");
+        var button = $("<button class='main_button'/>").text("Fill").click(clickOnFill);
+        $("#actionWrapper").append(button);
         button = $("<button/>").text("Set working dates").click(setWorkingDates);
-        $("#mainFillerHolder").prepend(button);
+        $("#actionWrapper").append(button);
+        button = $("<button/>").text("Clear dates").click(clearDates);
+        $("#actionWrapper").append(button);
+
+        $("fillWrapper").append(actionWrapper);
+
 
         var el = $(selectorHTML);
-        $("#mainFillerHolder").prepend(el);
+        $("#fillWrapper").prepend(el);
         el = $(issueNumberHTML);
-        $("#mainFillerHolder").prepend(el);
+        $("fillWrapper").prepend(el);
     };
 
     window.setup = function() {
@@ -148,9 +160,11 @@
             var mainFillerHolder = $("<div id='mainFillerHolder'></div>");
             $("#content").prepend(mainFillerHolder);
 
-            var calendarPlaceholder = $("<div id='calendarPH'></div>");
-            $("#mainFillerHolder").prepend(calendarPlaceholder);
+            var fillWrapper = $("<div id='fillWrapper' class='fillWrapper'></div>");
+            $("#mainFillerHolder").append(fillWrapper);
 
+            var calendarPlaceholder = $("<div id='calendarPH'></div>");
+            $("#fillWrapper").append(calendarPlaceholder);
             showCalendar();
         }
     };
