@@ -3,10 +3,10 @@
 ".actionWrapper button { background: #fff none repeat scroll 0 0; line-height: 24px; margin: 0 3px; padding: 0 10px; } " +
 ".actionWrapper .main_button { background: #eb007b; font-weight: bold; color:#fff; } " +
 ".hasDatepicker { border: 1px solid #ddd; margin: 10px 0; padding: 10px; }" +
-".fillWrapper { background: rgba(255, 255, 255, 0.3) none repeat scroll 0 0; border: 1px solid rgba(0, 0, 0, 0.15); " +
-    " box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); display: inline-block; margin: 20px; padding: 20px; } " +
+".fillWrapper, .progressWrapper { background: rgba(255, 255, 255, 0.3) none repeat scroll 0 0; border: 1px solid rgba(0, 0, 0, 0.15); " +
+    " box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); display: inline-block; margin: 20px; padding: 20px; border-radius: 2px; } " +
 ".fillWrapper input, .fillWrapper select { margin: 0 5px; } "+
-"#mainFillHolder { clear: both; display: block; }" +
+"#mainHolder { clear: both; display: block; }" +
 ".ui-datepicker-prev, .ui-datepicker-next { display: none; } " +
 ".ui-state-default {display: block;padding: 3px;text-align: center;} " +
 ".ui-datepicker .ui-datepicker-calendar .ui-state-highlight a { background: #743620 none repeat scroll 0 0; color: white; } ";
@@ -35,9 +35,9 @@
         if (entriesToPost.length === 0) {
             var maxVal = $("#progressBar").attr('max');
             $("#progressBar").val(maxVal);
-            alert("Logged successfully!");
-            $("#progressBar").hide();
-            $("#mainFillerHolder").show();
+            alert("Dates was logged successfully!");
+            $("#progressWrapper").hide();
+            $("#fillWrapper").show();
         } else {
             var oldVal = $("#progressBar").val();
             $("#progressBar").val(oldVal + 1);
@@ -93,12 +93,14 @@
                 }
             }
             if (confirm("Are you sure you want to log " + totalTime + " hours?")) {
-                $("#mainFillerHolder").hide();
-                if ($("#progressBar").length === 0) {
+                $("#fillWrapper").hide();
+                if ($("#progressWrapper").length === 0) {
+                    var progressWrapper = $("div id='progressWrapper' class='progressWrapper'></div>");
                     var progressBar = $("<h2>I'm doing the most boring job for you...</h2><progress id='progressBar' max='" + entriesToPost.length + "'></progress>");
-                    $("#content").prepend(progressBar);
+                    progressWrapper.append(progressBar);
+                    $("#mainHolder").prepend(progressWrapper);
                 } else {
-                    $("#progressBar").show();
+                    $("#progressWrapper").show();
                 }
                 $("#progressBar").val(0);
                 postDates(activityId, issueId, 8, entriesToPost);
@@ -162,11 +164,11 @@
             newSS.rel="stylesheet";
             newSS.href="data:text/css," + escape(styles);
             document.documentElement.childNodes[0].appendChild(newSS);
-            var mainFillerHolder = $("<div id='mainFillerHolder'></div>");
-            $("#content").prepend(mainFillerHolder);
+            var mainHolder = $("<div id='mainHolder'></div>");
+            $("#content").prepend(mainHolder);
 
             var fillWrapper = $("<div id='fillWrapper' class='fillWrapper'></div>");
-            $("#mainFillerHolder").append(fillWrapper);
+            $("#mainHolder").append(fillWrapper);
 
             var calendarPlaceholder = $("<div id='calendarPH'></div>");
             $("#fillWrapper").append(calendarPlaceholder);
