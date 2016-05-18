@@ -3,6 +3,7 @@
 ".actionWrapper button { background: #fff none repeat scroll 0 0; line-height: 24px; margin: 0 3px; padding: 0 10px; } " +
 ".actionWrapper .main_button { background: #eb007b; font-weight: bold; color:#fff; } " +
 ".hasDatepicker { border: 1px solid #ddd; margin: 10px 0; padding: 10px; }" +
+".progressWrapper progress { width: 100%; } " +
 ".fillWrapper, .progressWrapper { background: rgba(255, 255, 255, 0.3) none repeat scroll 0 0; border: 1px solid rgba(0, 0, 0, 0.15); " +
     " box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); display: inline-block; margin: 20px; padding: 20px; border-radius: 2px; } " +
 ".fillWrapper input, .fillWrapper select { margin: 0 5px; } "+
