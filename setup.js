@@ -95,7 +95,7 @@
             if (confirm("Are you sure you want to log " + totalTime + " hours?")) {
                 $("#fillWrapper").hide();
                 if ($("#progressWrapper").length === 0) {
-                    var progressWrapper = $("div id='progressWrapper' class='progressWrapper'></div>");
+                    var progressWrapper = $("<div id='progressWrapper' class='progressWrapper'></div>");
                     var progressBar = $("<h2>I'm doing the most boring job for you...</h2><progress id='progressBar' max='" + entriesToPost.length + "'></progress>");
                     progressWrapper.append(progressBar);
                     $("#mainHolder").prepend(progressWrapper);
