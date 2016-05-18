@@ -135,14 +135,14 @@
         $("#calendarPH").multiDatesPicker({ firstDay: 1, addDates: dates });
 
         var actionWrapper = $("<div id='actionWrapper' class='actionWrapper'></div>");
-        var button = $("<button class='main_button'/>").text("Fill").click(clickOnFill);
-        $("#actionWrapper").append(button);
-        button = $("<button/>").text("Set working dates").click(setWorkingDates);
-        $("#actionWrapper").append(button);
-        button = $("<button/>").text("Clear dates").click(clearDates);
-        $("#actionWrapper").append(button);
-
         $("#fillWrapper").append(actionWrapper);
+
+        var button = $("<button class='main_button'/>").text("Fill").click(clickOnFill);
+        actionWrapper.append(button);
+        button = $("<button/>").text("Set working dates").click(setWorkingDates);
+        actionWrapper.append(button);
+        button = $("<button/>").text("Clear dates").click(clearDates);
+        actionWrapper.append(button);
 
 
         var el = $(selectorHTML);
