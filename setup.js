@@ -142,13 +142,13 @@
         button = $("<button/>").text("Clear dates").click(clearDates);
         $("#actionWrapper").append(button);
 
-        $("fillWrapper").append(actionWrapper);
+        $("#fillWrapper").append(actionWrapper);
 
 
         var el = $(selectorHTML);
         $("#fillWrapper").prepend(el);
         el = $(issueNumberHTML);
-        $("fillWrapper").prepend(el);
+        $("#fillWrapper").prepend(el);
     };
 
     window.setup = function() {
