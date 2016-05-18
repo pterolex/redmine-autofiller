@@ -1,17 +1,4 @@
 ﻿(function($) {
-    var styles=
-".actionWrapper button { background: #fff none repeat scroll 0 0; line-height: 24px; margin: 0 3px; padding: 0 10px; } " +
-".actionWrapper .main_button { background: #eb007b; font-weight: bold; color:#fff; } " +
-".hasDatepicker { border: 1px solid #ddd; margin: 10px 0; padding: 10px; }" +
-".progressWrapper progress { width: 100%; } " +
-".fillWrapper, .progressWrapper { background: rgba(255, 255, 255, 0.3) none repeat scroll 0 0; border: 1px solid rgba(0, 0, 0, 0.15); " +
-    " box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); display: inline-block; margin: 20px; padding: 20px; border-radius: 2px; } " +
-".fillWrapper input, .fillWrapper select { margin: 0 5px; } "+
-"#mainHolder { clear: both; display: block; }" +
-".ui-datepicker-prev, .ui-datepicker-next { display: none; } " +
-".ui-state-default {display: block;padding: 3px;text-align: center;} " +
-".ui-datepicker .ui-datepicker-calendar .ui-state-highlight a { background: #743620 none repeat scroll 0 0; color: white; } ";
-
     var issueNumberHTML = 
         '<p><label for="time_entry_issue_id">Issue number</label>' +
         '<input id="time_entry_issue_id" type="text" value="" size="6" name="time_entry[issue_id]"></p>';
@@ -25,6 +12,9 @@
        '<option value="56">Sick leave</option>' +
        '<option value="57">Vacation</option>' +
        '</select></p>';
+
+    var progressHTML = 
+       '<h2>I\'m doing the most boring job for you...</h2><progress id="progressBar"></progress>';
 
     var convertToUtc = function(dd) {
         var date = dd.getDate(), month = dd.getMonth(), year = dd.getFullYear();
@@ -97,7 +87,8 @@
                 $("#fillWrapper").hide();
                 if ($("#progressWrapper").length === 0) {
                     var progressWrapper = $("<div id='progressWrapper' class='progressWrapper'></div>");
-                    var progressBar = $("<h2>I'm doing the most boring job for you...</h2><progress id='progressBar' max='" + entriesToPost.length + "'></progress>");
+                    var progressBar = $(progressHTML);
+                    progressBar.attr('max', entriesToPost.length);
                     progressWrapper.append(progressBar);
                     $("#mainHolder").prepend(progressWrapper);
                 } else {
@@ -161,18 +152,14 @@
 
     window.setup = function() {
         if ($("#calendarPH").length === 0) {
-            var newSS=document.createElement("link");
-            newSS.rel="stylesheet";
-            newSS.href="data:text/css," + escape(styles);
-            document.documentElement.childNodes[0].appendChild(newSS);
             var mainHolder = $("<div id='mainHolder'></div>");
             $("#content").prepend(mainHolder);
 
             var fillWrapper = $("<div id='fillWrapper' class='fillWrapper'></div>");
-            $("#mainHolder").append(fillWrapper);
+            mainHolder.append(fillWrapper);
 
             var calendarPlaceholder = $("<div id='calendarPH'></div>");
-            $("#fillWrapper").append(calendarPlaceholder);
+            fillWrapper.append(calendarPlaceholder);
             showCalendar();
         }
     };
