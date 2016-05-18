@@ -1,7 +1,7 @@
 ﻿(function($) {
     var styles=
 ".actionWrapper button { background: #fff none repeat scroll 0 0; line-height: 24px; margin: 0 3px; padding: 0 10px; } " +
-".main_button { background:#eb007b; font-weight: bold; color:#fff; } " +
+".actionWrapper .main_button { background: #eb007b; font-weight: bold; color:#fff; } " +
 ".hasDatepicker { border: 1px solid #ddd; margin: 10px 0; padding: 10px; }" +
 ".fillWrapper { background: rgba(255, 255, 255, 0.3) none repeat scroll 0 0; border: 1px solid rgba(0, 0, 0, 0.15); " +
     " box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); display: inline-block; margin: 20px; padding: 20px; } " +
@@ -95,7 +95,7 @@
             if (confirm("Are you sure you want to log " + totalTime + " hours?")) {
                 $("#mainFillerHolder").hide();
                 if ($("#progressBar").length === 0) {
-                    var progressBar = $("<progress id='progressBar' max='" + entriesToPost.length + "'></progress>");
+                    var progressBar = $("<h2>I'm doing the most boring job for you...</h2><progress id='progressBar' max='" + entriesToPost.length + "'></progress>");
                     $("#content").prepend(progressBar);
                 } else {
                     $("#progressBar").show();
