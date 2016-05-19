@@ -1,4 +1,6 @@
-﻿.actionWrapper button { background: #fff none repeat scroll 0 0; line-height: 24px; margin: 0 3px; padding: 0 10px; }
+﻿@charset "UTF-8";
+
+.actionWrapper button { background: #fff none repeat scroll 0 0; line-height: 24px; margin: 0 3px; padding: 0 10px; }
 
 .actionWrapper .main_button { 
     background: #eb007b; font-weight: bold; color:#fff; 
