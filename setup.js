@@ -1,4 +1,6 @@
 ﻿(function($) {
+    var DEBUG_MODE = true;
+
     var issueNumberHTML = 
         '<p><label for="time_entry_issue_id">Issue number</label>' +
         '<input id="time_entry_issue_id" type="text" value="" size="6" name="time_entry[issue_id]"></p>';
@@ -42,7 +44,7 @@
                 "time_entry[issue_id]": issueId,
                 "time_entry[spent_on]": strDate
             };
-            if (true/*debug*/) {
+            if (DEBUG_MODE) {
                 console.log(entryToLog);
                 setTimeout(nextCall, 1000);
             } else {
@@ -83,7 +85,13 @@
                     totalTime += 8;
                 }
             }
-            if (confirm("Are you sure you want to log " + totalTime + " hours?")) {
+            var questionMessage = "Are you sure you want to log " + totalTime + " hours?\n";
+            if (DEBUG_MODE) {
+                questionMessage += "(Don't worry, it's in debug mode. No real logging will be done)";
+            } else {
+                questionMessage += "(CAUTION! Real logging will be done!)";
+            }
+            if (confirm(questionMessage)) {
                 $("#fillWrapper").hide();
                 if ($("#progressWrapper").length === 0) {
                     var progressWrapper = $("<div id='progressWrapper' class='progressWrapper'></div>");
