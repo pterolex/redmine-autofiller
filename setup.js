@@ -14,7 +14,7 @@
        '</select></p>';
 
     var progressHTML = 
-       '<h2>I\'m doing the most boring job for you...</h2><progress id="progressBar"></progress>';
+       '<h2>Please wait...</h2><p id="randomQuote"><p><p id="randomAuthor"></p><progress id="progressBar"></progress>';
 
     var convertToUtc = function(dd) {
         var date = dd.getDate(), month = dd.getMonth(), year = dd.getFullYear();
@@ -102,6 +102,10 @@
                     $("#progressWrapper").show();
                 }
                 $("#progressBar").val(0);
+                $.getJSON("http://quotes.stormconsultancy.co.uk/random.json", function(data) {
+                    $("#randomQuote").text(data.quote);
+                    $("#randomAuthor").text(data.author)
+                });
                 postDates(debugMode, activityId, issueId, 8, entriesToPost);
             }
         }        
