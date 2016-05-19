@@ -102,13 +102,15 @@
                     $("#progressWrapper").show();
                 }
                 $("#progressBar").val(0);
-                $.getJSON("https://crossorigin.me/http://quotes.stormconsultancy.co.uk/random.json", function(data) {
-                    $("#randomQuote").text(data.quote);
-                    $("#randomAuthor").text(data.author)
-                });
+                $.getScript("http://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en&jsonp=showQuote");
                 postDates(debugMode, activityId, issueId, 8, entriesToPost);
             }
         }        
+    };
+
+    window.showQuote = function(data) {
+        $("#randomQuote").text(data.quoteText);
+        $("#randomAuthor").text(data.quoteAuthor)
     };
 
     var clearDates = function() {
