@@ -102,7 +102,7 @@
                     $("#progressWrapper").show();
                 }
                 $("#progressBar").val(0);
-                $.getJSON("http://quotes.stormconsultancy.co.uk/random.json", function(data) {
+                $.getJSON("https://crossorigin.me/http://quotes.stormconsultancy.co.uk/random.json", function(data) {
                     $("#randomQuote").text(data.quote);
                     $("#randomAuthor").text(data.author)
                 });
