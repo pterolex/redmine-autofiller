@@ -28,7 +28,7 @@
         if (entriesToPost.length === 0) {
             var maxVal = $("#progressBar").attr('max');
             $("#progressBar").val(maxVal);
-            alert("Days were logged successfully!");
+            alert("Days were logged successfully!\nPlease send feedback to iaroshenko@gm" + "ail.com");
             $("#progressWrapper").hide();
             $("#fillWrapper").show();
         } else {

@@ -13,7 +13,7 @@
             $.getScript(gitHub + "/Multiple-Dates-Picker-for-jQuery-UI/master/jquery-ui.multidatespicker.js", function() {
                 $.getScript(gitHub + "/redmine-autofiller/master/setup.js", function() {
                     $("#loader").hide();
-                    setup();
+                    window.setup();
                 });
             });
         });
