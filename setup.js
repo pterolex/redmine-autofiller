@@ -1,6 +1,4 @@
 ﻿(function($) {
-    var DEBUG_MODE = true;
-
     var issueNumberHTML = 
         '<p><label for="time_entry_issue_id">Issue number</label>' +
         '<input id="time_entry_issue_id" type="text" value="" size="6" name="time_entry[issue_id]"></p>';
@@ -24,11 +22,11 @@
         return dd;
     };
 
-    var postDates = function(activityId, issueId, hours, entriesToPost) {
+    var postDates = function(debugMode, activityId, issueId, hours, entriesToPost) {
         if (entriesToPost.length === 0) {
             var maxVal = $("#progressBar").attr('max');
             $("#progressBar").val(maxVal);
-            alert("Days were logged successfully!\nPlease send feedback to iaroshenko@gm" + "ail.com");
+            alert("Days were logged successfully!\n\nPlease send feedback to iaroshenko@gm" + "ail.com");
             $("#progressWrapper").hide();
             $("#fillWrapper").show();
         } else {
@@ -36,7 +34,7 @@
             $("#progressBar").val(oldVal + 1);
             var strDate = entriesToPost[0];
             var slicedArray = entriesToPost.slice(1);
-            var nextCall = postDates.bind(null, activityId, issueId, hours, slicedArray);
+            var nextCall = postDates.bind(null, debugMode, activityId, issueId, hours, slicedArray);
             var entryToLog = {         
                 "time_entry[activity_id]": activityId,
                 "time_entry[comments]": "",
@@ -44,7 +42,7 @@
                 "time_entry[issue_id]": issueId,
                 "time_entry[spent_on]": strDate
             };
-            if (DEBUG_MODE) {
+            if (debugMode) {
                 console.log(entryToLog);
                 setTimeout(nextCall, 1000);
             } else {
@@ -86,7 +84,8 @@
                 }
             }
             var questionMessage = "Are you sure you want to log " + totalTime + " hours?\n";
-            if (DEBUG_MODE) {
+            var debugMode = !!window.debug;
+            if (debugMode) {
                 questionMessage += "(Don't worry, it's in debug mode. No real logging will be done)";
             } else {
                 questionMessage += "(CAUTION! Real logging will be done!)";
@@ -103,7 +102,7 @@
                     $("#progressWrapper").show();
                 }
                 $("#progressBar").val(0);
-                postDates(activityId, issueId, 8, entriesToPost);
+                postDates(debugMode, activityId, issueId, 8, entriesToPost);
             }
         }        
     };
