@@ -26,7 +26,7 @@
         if (entriesToPost.length === 0) {
             var maxVal = $("#progressBar").attr('max');
             $("#progressBar").val(maxVal);
-            alert("Dates was logged successfully!");
+            alert("Days were logged successfully!");
             $("#progressWrapper").hide();
             $("#fillWrapper").show();
         } else {
@@ -136,9 +136,9 @@
 
         var button = $("<button class='main_button'/>").text("Fill").click(clickOnFill);
         actionWrapper.append(button);
-        button = $("<button/>").text("Set working dates").click(setWorkingDates);
+        button = $("<button/>").text("Select working days").click(setWorkingDates);
         actionWrapper.append(button);
-        button = $("<button/>").text("Clear dates").click(clearDates);
+        button = $("<button/>").text("Clear selection").click(clearDates);
         actionWrapper.append(button);
 
 
