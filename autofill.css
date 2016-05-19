@@ -1,9 +1,16 @@
 ﻿@charset "UTF-8";
 
-.actionWrapper button { background: #fff none repeat scroll 0 0; line-height: 24px; margin: 0 3px; padding: 0 10px; }
+.actionWrapper button {
+    background: #fff none repeat scroll 0 0;
+    line-height: 24px;
+    margin: 0 3px;
+    padding: 0 10px;
+}
 
-.actionWrapper .main_button { 
-    background: #eb007b; font-weight: bold; color:#fff; 
+.actionWrapper .main_button {
+    background: #eb007b;
+    font-weight: bold;
+    color:#fff;
 }
 
 .hasDatepicker {
@@ -13,28 +20,43 @@
     padding: 15px;
 }
 
-.progressWrapper progress { width: 100%; }
-
-.fillWrapper, .progressWrapper { background: rgba(255, 255, 255, 0.3) none repeat scroll 0 0; border: 1px solid rgba(0, 0, 0, 0.15);
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); display: inline-block; margin: 20px; padding: 20px; border-radius: 2px; 
+.progressWrapper progress {
+    width: 100%;
 }
 
-.fillWrapper input, .fillWrapper select { margin: 0 5px; 
-}
-#mainHolder { 
-    clear: both; 
-    display: block; 
+.fillWrapper, .progressWrapper {
+    background: rgba(255, 255, 255, 0.3) none repeat scroll 0 0;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 2px;
 }
 
-.ui-datepicker-prev, .ui-datepicker-next { display: none; } 
+.fillWrapper input, .fillWrapper select {
+    margin: 0 5px;
+}
+
+#mainHolder {
+    clear: both;
+    display: block;
+}
+
+.ui-datepicker-prev, .ui-datepicker-next {
+    display: none;
+}
 
 .ui-state-default {
-    display: block;padding: 3px;text-align: center;
+    display: block;
+    padding: 3px;
+    text-align: center;
 }
-.ui-datepicker .ui-datepicker-calendar .ui-state-highlight a { 
-    background: #743620 none repeat scroll 0 0; 
-    color: white; 
-} 
+
+.ui-datepicker .ui-datepicker-calendar .ui-state-highlight a {
+    background: #743620 none repeat scroll 0 0;
+    color: white;
+}
 
 .ui-datepicker-calendar {
     margin: 0 auto;
