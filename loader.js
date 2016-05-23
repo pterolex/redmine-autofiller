@@ -7,10 +7,10 @@
    $.getScript(gH+"/Multiple-Dates-Picker-for-jQuery-UI/master/jquery-ui.multidatespicker.js",function(){
     $.getScript(gH+"/redmine-autofiller/"+br+"/setup.js",function(){
      var d=new Date(),c="ukr";
-     $.getJSON("http://kayaposoft.com/enrico/json/v1.0/?action=getPublicHolidaysForMonth&jsonp=holidaysLoaded"+
+     $.getScript("http://kayaposoft.com/enrico/json/v1.0/?action=getPublicHolidaysForMonth&jsonp=holidaysLoaded"+
      "&month="+(d.getMonth()+1)+"&year="+d.getFullYear()+"&country="+c).always(function(){
       $("#ldr").hide();
-      setup(h);
+      setup();
      });
     });
    });
