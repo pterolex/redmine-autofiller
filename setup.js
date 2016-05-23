@@ -108,8 +108,11 @@
         }        
     };
 
+    var holidays = [];
+
     window.holidaysLoaded = function(data) {
-         console.log(data);
+         holidays = data;
+         setWorkingDates();
     };
 
     window.showQuote = function(data) {
@@ -137,7 +140,15 @@
             if (dd.getMonth() !== originMonth) {
                 break;
             }
-            if (dd.getDay() !== 6 && dd.getDay() !== 0) {
+            var isHoliday = false;
+            var isWeekEnd = dd.getDay() === 6 || dd.getDay() === 0;
+            for(var j = 0; j < holidays.length; ++j) {
+                if (holidays[j].date.day===i) {
+                    isHoliday = true;
+                    break;
+                }
+            }
+            if (!isHoliday && !isWeekEnd) {
                 dates.push(dd);
             }
         }
@@ -145,8 +156,7 @@
     };
 
     var showCalendar = function() {
-        var dates = getWorkingDates();
-        $("#calendarPH").multiDatesPicker({ firstDay: 1, addDates: dates });
+        $("#calendarPH").multiDatesPicker({ firstDay: 1 });
 
         var actionWrapper = $("<div id='actionWrapper' class='actionWrapper'></div>");
         $("#fillWrapper").append(actionWrapper);
@@ -167,8 +177,7 @@
         $("#fillWrapper").prepend(el);
     };
 
-    window.setup = function(holidays) {
-        console.log(holidays);
+    window.setup = function() {
         if ($("#calendarPH").length === 0) {
             var mainHolder = $("<div id='mainHolder'></div>");
             $("#content").prepend(mainHolder);
