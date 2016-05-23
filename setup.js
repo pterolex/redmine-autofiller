@@ -127,8 +127,6 @@
 
     window.holidaysLoaded = function(data) {
          holidays = data;
-         $("#calendarPH").multiDatesPicker({ firstDay: 1 });
-         setWorkingDates();
     };
 
     var getWorkingDates = function() {
@@ -157,6 +155,9 @@
     };
 
     var showCalendar = function() {
+         $("#calendarPH").multiDatesPicker({ firstDay: 1 });
+         setWorkingDates();
+
         var actionWrapper = $("<div id='actionWrapper' class='actionWrapper'></div>");
         $("#fillWrapper").append(actionWrapper);
 
