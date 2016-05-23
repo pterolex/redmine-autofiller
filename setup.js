@@ -108,13 +108,6 @@
         }        
     };
 
-    var holidays = [];
-
-    window.holidaysLoaded = function(data) {
-         holidays = data;
-         setWorkingDates();
-    };
-
     window.showQuote = function(data) {
         $("#randomQuote").text(data.quoteText);
         $("#randomAuthor").text(data.quoteAuthor)
@@ -124,10 +117,17 @@
         $("#calendarPH").multiDatesPicker('resetDates', 'picked');
     };
 
+    var holidays = [];
+
     var setWorkingDates = function() {
         $("#calendarPH").multiDatesPicker('resetDates', 'picked');
         var dates = getWorkingDates();
         $("#calendarPH").multiDatesPicker('addDates', dates);
+    };
+
+    window.holidaysLoaded = function(data) {
+         holidays = data;
+         setWorkingDates();
     };
 
     var getWorkingDates = function() {
