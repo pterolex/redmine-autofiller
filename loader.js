@@ -1,6 +1,7 @@
 ﻿(function($) {
  $("<div id='ldr'>Loading...</div>").prependTo("#content");
- var gH="https://rawgit.com/s-iaroshenko",br="test";
+ var debugMode = !!window.debug,sevice=debugMode?"raw.githubusercontent.com":"rawgit.com",
+ gH="https://"+sevice+"/s-iaroshenko",br=debugMode?"test":"master";
  $.ajax(gH+"/redmine-autofiller/"+br+"/autofill.css").done(function(css){
   $("<style type='text/css'>"+css+"</style>").appendTo("head");
   $.getScript("https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js",function(){
