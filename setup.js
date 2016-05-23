@@ -163,7 +163,8 @@
         $("#fillWrapper").prepend(el);
     };
 
-    window.setup = function() {
+    window.setup = function(holidays) {
+        console.log(holidays);
         if ($("#calendarPH").length === 0) {
             var mainHolder = $("<div id='mainHolder'></div>");
             $("#content").prepend(mainHolder);
@@ -173,7 +174,7 @@
 
             var calendarPlaceholder = $("<div id='calendarPH'></div>");
             fillWrapper.append(calendarPlaceholder);
-            showCalendar();
+            showCalendar();            
         }
     };
 }(jQuery));

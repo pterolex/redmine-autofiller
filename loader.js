@@ -6,8 +6,12 @@
   $.getScript("https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js",function(){
    $.getScript(gH+"/Multiple-Dates-Picker-for-jQuery-UI/master/jquery-ui.multidatespicker.js",function(){
     $.getScript(gH+"/redmine-autofiller/master/setup.js",function(){
-     $("#ldr").hide();
-     setup();
+     var d=new Date(),c="ukr",h;
+     $.getJSON("http://kayaposoft.com/enrico/json/v1.0/?action=getPublicHolidaysForMonth"+
+     "&month="+d.getMonth()+"&year="+d.getFullYear()+"&country="+c).done(function(r){h=r;}).always(function(){
+      $("#ldr").hide();
+      setup(h);
+     });
     });
    });
   });
