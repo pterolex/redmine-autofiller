@@ -7,7 +7,7 @@
    $.getScript(gH+"/Multiple-Dates-Picker-for-jQuery-UI/master/jquery-ui.multidatespicker.js",function(){
     $.getScript(gH+"/redmine-autofiller/"+br+"/setup.js",function(){
      var d=new Date(),c="ukr",h;
-     $.getJSON("http://kayaposoft.com/enrico/json/v1.0/?action=getPublicHolidaysForMonth"+
+     $.getJSON("https://crossorigin.me/http://kayaposoft.com/enrico/json/v1.0/?action=getPublicHolidaysForMonth"+
      "&month="+d.getMonth()+"&year="+d.getFullYear()+"&country="+c).done(function(r){h=r;}).always(function(){
       $("#ldr").hide();
       setup(h);
