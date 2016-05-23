@@ -127,6 +127,7 @@
 
     window.holidaysLoaded = function(data) {
          holidays = data;
+         $("#calendarPH").multiDatesPicker({ firstDay: 1 });
          setWorkingDates();
     };
 
@@ -156,8 +157,6 @@
     };
 
     var showCalendar = function() {
-        $("#calendarPH").multiDatesPicker({ firstDay: 1 });
-
         var actionWrapper = $("<div id='actionWrapper' class='actionWrapper'></div>");
         $("#fillWrapper").append(actionWrapper);
 
@@ -187,7 +186,7 @@
 
             var calendarPlaceholder = $("<div id='calendarPH'></div>");
             fillWrapper.append(calendarPlaceholder);
-            showCalendar();            
+            showCalendar();
         }
     };
 }(jQuery));
