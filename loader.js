@@ -6,9 +6,9 @@
   $.getScript("https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js",function(){
    $.getScript(gH+"/Multiple-Dates-Picker-for-jQuery-UI/master/jquery-ui.multidatespicker.js",function(){
     $.getScript(gH+"/redmine-autofiller/"+br+"/setup.js",function(){
-     var d=new Date(),c="ukr",h;
-     $.getJSON("https://crossorigin.me/http://kayaposoft.com/enrico/json/v1.0/?action=getPublicHolidaysForMonth"+
-     "&month="+(d.getMonth()+1)+"&year="+d.getFullYear()+"&country="+c).done(function(r){h=r;}).always(function(){
+     var d=new Date(),c="ukr";
+     $.getJSON("http://kayaposoft.com/enrico/json/v1.0/?action=getPublicHolidaysForMonth&jsonp=holidaysLoaded"+
+     "&month="+(d.getMonth()+1)+"&year="+d.getFullYear()+"&country="+c).always(function(){
       $("#ldr").hide();
       setup(h);
      });

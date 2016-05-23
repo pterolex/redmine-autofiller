@@ -108,6 +108,10 @@
         }        
     };
 
+    window.holidaysLoaded = function(data) {
+         console.log(data);
+    };
+
     window.showQuote = function(data) {
         $("#randomQuote").text(data.quoteText);
         $("#randomAuthor").text(data.quoteAuthor)
