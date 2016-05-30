@@ -2,7 +2,10 @@
 var $ = window.$ = window.jQuery = require('jquery');
 require('jquery-ui');
 require('./vendor/jquery-ui.multidatespicker.js');
+
+// CSS split into 2 files
 require('./autofill.css');
+require('./autofill2.css');
 
 var d = new Date(),c="ukr";
 
